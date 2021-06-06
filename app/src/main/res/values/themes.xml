@@ -1,0 +1,68 @@
+<resources>
+
+    <style name="Theme.42_api" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    
+    <style name="SearchButton" parent="@style/Widget.AppCompat.Button.Colored">
+        <item name="android:background">@drawable/button</item>
+        <item name="android:textAppearance">@style/TitleTextStyle</item>
+    </style>
+
+    <style name="CustomActionbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="colorControlNormal">@color/colorAccent</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="colorPrimary">@color/transparent</item>
+        <item name="android:textAppearance">@style/TitleTextStyle</item>
+    </style>
+
+    <style name="TitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:shadowColor">@color/black</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowDy">1</item>
+    </style>
+
+    <style name="TitleTextStyle.Black" parent="TitleTextStyle">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TitleTextStyle.FinalMark" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TitleTextStyle.FinalMark.Success" parent="TitleTextStyle.FinalMark">
+        <item name="android:textColor">@color/success_final_mark</item>
+    </style>
+
+    <style name="TitleTextStyle.FinalMark.Fail" parent="TitleTextStyle.FinalMark">
+        <item name="android:textColor">@color/fail_final_mark</item>
+    </style>
+
+    <style name="NormalTextStyle" parent="@style/Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="NormalTextStyle.Black" parent="@style/NormalTextStyle">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="SpinnerTheame" parent="android:Widget.Spinner" >
+        <item name="android:background">@drawable/bg_spinner</item>
+    </style>
+
+    <style name="RetryButton" parent="@style/Widget.AppCompat.Button.Colored">
+        <item name="android:background">@drawable/button</item>
+        <item name="android:textAppearance">@style/TitleTextStyle</item>
+    </style>
+</resources>

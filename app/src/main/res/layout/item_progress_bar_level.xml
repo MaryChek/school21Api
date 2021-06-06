@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <FrameLayout
+        android:id="@+id/cardProgressLevel"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="@drawable/transparent_black_card">
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/progressLevel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:max="100"
+            android:progress="94"
+            android:progressDrawable="@drawable/progress_level" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvProgressLevel"
+        style="@style/NormalTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/cardProgressLevel"
+        app:layout_constraintEnd_toEndOf="@+id/cardProgressLevel"
+        app:layout_constraintStart_toStartOf="@+id/cardProgressLevel"
+        app:layout_constraintTop_toTopOf="@+id/cardProgressLevel"
+        tools:text="level 10 - 10%" />
+</androidx.constraintlayout.widget.ConstraintLayout>

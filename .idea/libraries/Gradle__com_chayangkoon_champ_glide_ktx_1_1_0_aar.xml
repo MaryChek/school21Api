@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.chayangkoon.champ:glide-ktx:1.1.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/cdc998a343e7dcb58d96f1d389f3b627/jetified-glide-ktx-1.1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/cdc998a343e7dcb58d96f1d389f3b627/jetified-glide-ktx-1.1.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/cdc998a343e7dcb58d96f1d389f3b627/jetified-glide-ktx-1.1.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.chayangkoon.champ/glide-ktx/1.1.0/f6e98109d661d0cbf8ca943b22ca4075fa1db073/glide-ktx-1.1.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.chayangkoon.champ/glide-ktx/1.1.0/11b9b58a5d1403f9849c3005aa3593f6b2afbee8/glide-ktx-1.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

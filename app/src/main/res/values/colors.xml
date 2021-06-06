@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#058C6C</color>
+    <color name="colorPrimaryDark">#233051</color>
+    <color name="colorAccent">#06B189</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="transparent_black">#B9000000</color>
+    <color name="transparent">#0000</color>
+    <color name="light_grey">#D6D6D6</color>
+    <color name="default_coalition_color">#00BABC</color>
+    <color name="search_edit_text_color">#FFFFFFFF</color>
+
+    <color name="success_final_mark">#5CB85C</color>
+    <color name="fail_final_mark">#D8636F</color>
+</resources>

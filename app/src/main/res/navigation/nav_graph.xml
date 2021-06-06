@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graf"
+    app:startDestination="@id/searchLoginFragment">
+
+    <fragment
+        android:id="@+id/searchLoginFragment"
+        android:name="com.example.a42_api.presentation.fragments.SearchLoginFragment"
+        android:label="School 42">
+        <action
+            android:id="@+id/action_searchLoginFragment_to_loginDetailsFragment"
+            app:destination="@id/loginDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginDetailsFragment"
+        android:name="com.example.a42_api.presentation.fragments.LoginDetailFragment">
+        <argument
+            android:name="user"
+            app:argType="com.example.a42_api.presentation.models.User" />
+    </fragment>
+</navigation>

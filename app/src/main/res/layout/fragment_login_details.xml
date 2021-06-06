@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_grey"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/detailAppBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height='?attr/actionBarSize'
+        android:fitsSystemWindows="true"
+        android:outlineAmbientShadowColor="@color/transparent"
+        android:outlineSpotShadowColor="@color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:theme="@style/CustomActionbarTheme">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/detailToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            app:titleTextAppearance="@style/TitleTextStyle" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/loginProfile"
+                layout="@layout/item_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <include
+                android:id="@+id/itemSkills"
+                layout="@layout/cv_properties"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="10dp"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <include
+                android:id="@+id/itemProjects"
+                layout="@layout/cv_properties"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
+                android:visibility="gone"
+                tools:visibility="visible" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/nestedScrollView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/layout_connection_error"
+        layout="@layout/connection_error"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/detailAppBarLayout"
+        tools:visibility="gone" />
+</androidx.constraintlayout.widget.ConstraintLayout>

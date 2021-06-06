@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">School 42</string>
+    <string name="query_hint">login</string>
+    <string name="search">Search</string>
+    <string name="user">user</string>
+    <string name="wallet">%1$d₳</string>
+    <string name="level_and_percentage">level %1$d - %2$d%%</string>
+    <string name="menu_item_courses_chooser">Courses chooser</string>
+    <string name="connection_error">Something is wrong when connecting</string>
+    <string name="try_again">Turn on the internet and try again</string>
+    <string name="btn_retry">Retry</string>
+    <string name="skills">Skills</string>
+    <string name="projects">Projects</string>
+    <string name="skill_value">%1$.2f</string>
+</resources>
