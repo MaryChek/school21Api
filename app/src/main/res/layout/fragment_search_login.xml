@@ -11,10 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
         android:background="@color/transparent"
+        android:theme="@style/CustomActionbarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:theme="@style/CustomActionbarTheme"
         app:title="@string/app_name"
         app:titleTextAppearance="@style/TitleTextStyle" />
 
@@ -27,9 +27,9 @@
         android:hint="@string/query_hint"
         android:imeOptions="actionDone"
         android:inputType="textPersonName"
+        android:paddingHorizontal="10dp"
         android:textAppearance="@style/NormalTextStyle.Black"
         android:textSize="20sp"
-        android:paddingHorizontal="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

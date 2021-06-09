@@ -72,7 +72,7 @@ open class BaseLoginFragment : Fragment() {
             })
     }
 
-    protected fun setSvgToImageViewWithCallBackFuncIfRequired(
+    protected fun setSvgToImageViewWithOnReadyCallBackFuncIfRequired(
         imageView: ImageView,
         imageUrl: String,
         onImageLoad: ((ImageView) -> Unit)? = null

@@ -8,11 +8,9 @@
 
     <ImageView
         android:id="@+id/imgBackgroundProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="385dp"
+        android:layout_width="match_parent"
+        android:layout_height="395dp"
         android:background="@drawable/background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -20,7 +18,6 @@
         android:layout_width="102dp"
         android:layout_height="95dp"
         android:contentDescription="@string/app_name"
-        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,11 +57,9 @@
     <FrameLayout
         android:id="@+id/cardProfile"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginHorizontal="10dp"
+        android:layout_height="110dp"
+        android:layout_marginHorizontal="15dp"
         android:background="@drawable/transparent_black_card"
-        android:gravity="center_horizontal"
-        android:paddingVertical="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,9 +73,9 @@
         style="@style/NormalTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
         app:layout_constraintBottom_toBottomOf="@+id/cardProfile"
-        app:layout_constraintStart_toEndOf="@+id/imgLocation"
+        app:layout_constraintEnd_toEndOf="@+id/cardProfile"
+        app:layout_constraintStart_toStartOf="@+id/cardProfile"
         app:layout_constraintTop_toBottomOf="@+id/imgPoint"
         tools:text="Unavailable" />
 
@@ -88,10 +83,8 @@
         android:id="@+id/imgWallet"
         android:layout_width="45dp"
         android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:layout_marginStart="30dp"
         app:layout_constraintBottom_toBottomOf="@+id/cardProfile"
-        app:layout_constraintStart_toStartOf="@+id/cardProfile"
+        app:layout_constraintEnd_toStartOf="@+id/tvWallet"
         app:layout_constraintTop_toTopOf="@+id/cardProfile"
         app:layout_constraintVertical_bias="0.2"
         app:srcCompat="@drawable/ic_wallet" />
@@ -101,9 +94,9 @@
         style="@style/NormalTextStyle"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
         app:layout_constraintBottom_toBottomOf="@+id/imgWallet"
-        app:layout_constraintStart_toEndOf="@+id/imgWallet"
+        app:layout_constraintEnd_toStartOf="@+id/tvPoint"
+        app:layout_constraintStart_toStartOf="@+id/cardProfile"
         app:layout_constraintTop_toTopOf="@+id/imgWallet"
         app:layout_constraintVertical_bias="0.7"
         tools:text="200₳" />
@@ -112,10 +105,10 @@
         android:id="@+id/imgPoint"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_gravity="center"
         android:layout_marginStart="70dp"
+        android:layout_marginEnd="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/imgWallet"
-        app:layout_constraintStart_toStartOf="@+id/tvWallet"
+        app:layout_constraintEnd_toStartOf="@+id/tvPoint"
         app:layout_constraintTop_toTopOf="@+id/imgWallet"
         app:layout_constraintVertical_bias="0.8"
         app:srcCompat="@drawable/ic_security_on" />
@@ -125,45 +118,42 @@
         style="@style/NormalTextStyle"
         android:layout_width="20dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/imgPoint"
-        app:layout_constraintStart_toEndOf="@+id/imgPoint"
+        app:layout_constraintEnd_toEndOf="@+id/cardProfile"
+        app:layout_constraintStart_toStartOf="@+id/cardProfile"
         app:layout_constraintTop_toTopOf="@+id/imgPoint"
         tools:text="42" />
 
-
-    <ImageView
-        android:id="@+id/imCoursesChooser"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="60dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imgPoint"
-        app:layout_constraintStart_toEndOf="@+id/imgPoint"
-        app:layout_constraintTop_toTopOf="@+id/imgPoint"
-        app:srcCompat="@drawable/ic_course" />
-
-    <Spinner
-        android:id="@+id/spCoursesChooser"
-        style="@style/SpinnerTheame"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="10dp"
-        android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toBottomOf="@+id/imCoursesChooser"
-        app:layout_constraintStart_toStartOf="@+id/imCoursesChooser"
-        app:layout_constraintTop_toTopOf="@+id/imCoursesChooser"
-        app:layout_constraintVertical_bias="0.56" />
+        app:layout_constraintBottom_toBottomOf="@+id/tvPoint"
+        app:layout_constraintEnd_toEndOf="@+id/cardProfile"
+        app:layout_constraintStart_toEndOf="@+id/tvPoint"
+        app:layout_constraintTop_toTopOf="@+id/tvPoint">
+
+        <ImageView
+            android:id="@+id/imCoursesChooser"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/ic_course" />
+
+        <Spinner
+            android:id="@+id/spCoursesChooser"
+            style="@style/SpinnerTheame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:spinnerMode="dropdown" />
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/imgLocation"
         android:layout_width="33dp"
         android:layout_height="25dp"
-        android:layout_gravity="center"
-        android:layout_marginStart="120dp"
         app:layout_constraintBottom_toBottomOf="@+id/cardProfile"
-        app:layout_constraintStart_toStartOf="@+id/cardProfile"
+        app:layout_constraintEnd_toStartOf="@+id/tvLocation"
         app:layout_constraintTop_toBottomOf="@+id/imgPoint"
         app:srcCompat="@drawable/ic_location" />
 
@@ -172,7 +162,7 @@
         layout="@layout/item_progress_bar_level"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginHorizontal="15dp"
         android:layout_marginTop="5dp"
         app:layout_constraintTop_toBottomOf="@+id/cardProfile" />
 
@@ -180,11 +170,9 @@
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="72dp"
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginHorizontal="15dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/transparent_black_card"
-        android:gravity="center_horizontal"
-        android:paddingVertical="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layoutProgressLevel" />

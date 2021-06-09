@@ -68,7 +68,7 @@ class School42ResourceMapper {
             DomainCampus(
                 it.name,
                 it.active,
-                it.country,
+                it.city,
             )
         }
 

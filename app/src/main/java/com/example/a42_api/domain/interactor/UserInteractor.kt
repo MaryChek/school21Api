@@ -17,6 +17,7 @@ class UserInteractor(
 
     private var orderedCoalitionIdIds: List<CoalitionId>? = null
     private var coalitions: List<Coalition>? = null
+    private var courses: List<Course>? = null
 
     private var onServerError: ((Int?) -> Unit)? = null
     private var onGetUserCoursesAndCoalitions: ((List<Course>, List<Coalition>) -> Unit)? = null
@@ -101,7 +102,7 @@ class UserInteractor(
     private fun onGetTheCourses(courses: List<Course>) {
         coalitions?.let { coalitions ->
             onGetUserCoursesAndCoalitions?.invoke(courses, coalitions)
-            onWorkEnd()
+            removeDate()
         }
     }
 
@@ -145,11 +146,11 @@ class UserInteractor(
             else -> onServerError?.invoke(errorCode)
         }
 
-    private fun onWorkEnd() {
+    fun removeDate() {
         userLogin = null
         searchedLogin = null
         orderedCoalitionIdIds = null
-        this.coalitions = null
+        coalitions = null
     }
 
     companion object {

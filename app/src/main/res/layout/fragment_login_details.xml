@@ -14,10 +14,10 @@
         android:fitsSystemWindows="true"
         android:outlineAmbientShadowColor="@color/transparent"
         android:outlineSpotShadowColor="@color/transparent"
+        android:theme="@style/CustomActionbarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:theme="@style/CustomActionbarTheme">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/detailToolbar"

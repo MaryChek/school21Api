@@ -10,34 +10,48 @@ import com.example.a42_api.domain.models.Coalition as DomainCoalition
 class LoginDetailPresenter(
     private val view: LoginDetailContract.View,
     private val interactor: UserInteractor,
+    private val model: UserDetailModel,
     private val mapper: LoginDetailMapper,
 ) : LoginDetailContract.Presenter {
 
-    private lateinit var user: User
-    private var userCourses: List<Course>? = null
-    private var currentSelectedCourse = FIRST_COURSE_NUMBER
-
     override fun init(user: User) {
-        this.user = user
-        interactor.fetchUserCoursesAndCoalitions(
-            user.login,
-            this::onGetUserCoursesAndCoalitions,
-            this::onServerError
-        )
+        if (model.isFindUserByLogin(user.login)) {
+            val courses = model.getCourses()
+            courses?.let {
+                showUserDetail(courses)
+            }
+        } else {
+            model.updateUser(user)
+            interactor.fetchUserCoursesAndCoalitions(
+                user.login,
+                this::onGetUserCoursesAndCoalitions,
+                this::onServerError
+            )
+        }
     }
 
     private fun onGetUserCoursesAndCoalitions(
         courses: List<DomainCourse>,
         coalitions: List<DomainCoalition>
     ) {
+        val projects = model.getUser()?.projects
+        projects?.let {
+            val userCourses = mapper.mapCourses(courses, coalitions, projects)
+            showUserDetail(userCourses)
+            model.updateCourses(userCourses)
+        }
+    }
+
+    private fun showUserDetail(userCourses: List<Course>) {
         view.showProgressBar(false)
 
-        val userCourses = mapper.mapCourses(courses, coalitions, user.projects)
         val coursesNames: List<String> = userCourses.map { it.name }
-
-        view.showDetail(user, coursesNames)
-        updateUserDetail(userCourses[currentSelectedCourse])
-        this.userCourses = userCourses
+        val user = model.getUser()
+        user?.let {
+            view.showDetail(user, coursesNames)
+            val currentSelectedCourse = model.currentSelectedCourse
+            updateUserDetail(userCourses[currentSelectedCourse])
+        }
     }
 
     private fun updateUserDetail(course: Course) {
@@ -47,7 +61,6 @@ class LoginDetailPresenter(
         view.updateUserSkills(course.skills)
         updateProjects(course.projects)
         updateCoalition(course.coalition)
-
     }
 
     private fun updateColorProfile(coalition: Coalition) =
@@ -83,22 +96,22 @@ class LoginDetailPresenter(
         view.showConnectionErrorLayout(true)
 
     override fun onCourseClick(name: String) {
-        userCourses?.let { userCourses ->
+        val userCourses = model.getCourses()
+        if (userCourses != null) {
             val courseClicked = userCourses.first { it.name == name }
             val positionCourse: Int = userCourses.indexOf(courseClicked)
-            if (positionCourse != currentSelectedCourse) {
+            if (positionCourse != model.currentSelectedCourse) {
                 updateUserDetail(courseClicked)
-                currentSelectedCourse = positionCourse
+                model.currentSelectedCourse = positionCourse
             }
         }
     }
 
     override fun onRetryButtonClick() {
         view.showConnectionErrorLayout(false)
-        init(user)
-    }
-
-    companion object {
-        private const val FIRST_COURSE_NUMBER = 0
+        model.getUser()?.let { user ->
+            model.removeDate()
+            init(user)
+        }
     }
 }

@@ -23,10 +23,7 @@ import com.example.a42_api.presentation.adapters.ProjectListAdapter
 import com.example.a42_api.presentation.adapters.SkillsListAdapter
 import com.example.a42_api.presentation.contract.LoginDetailContract
 import com.example.a42_api.presentation.mapper.LoginDetailMapper
-import com.example.a42_api.presentation.models.Course
-import com.example.a42_api.presentation.models.Project
-import com.example.a42_api.presentation.models.Skill
-import com.example.a42_api.presentation.models.User
+import com.example.a42_api.presentation.models.*
 import com.example.a42_api.presentation.presenters.LoginDetailPresenter
 import com.example.a42_api.presentation.util.KeyForLogin
 import com.example.a42_api.presentation.util.OnSpinnerItemSelectedListener
@@ -46,7 +43,8 @@ class LoginDetailFragment : BaseLoginFragment(), LoginDetailContract.View {
     private fun init() {
         val app: App = (requireActivity().applicationContext as App)
         val interactor: UserInteractor = app.interactor
-        presenter = LoginDetailPresenter(this, interactor, LoginDetailMapper())
+        val model: UserDetailModel = app.userDetailModel
+        presenter = LoginDetailPresenter(this, interactor, model, LoginDetailMapper())
     }
 
     override fun onCreateView(
@@ -62,10 +60,10 @@ class LoginDetailFragment : BaseLoginFragment(), LoginDetailContract.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initNavigationToolBar()
-        initLogin()
         initSkillsList()
         initProjectList()
         setOnRetryConnectionClickListener()
+        initLogin()
     }
 
     private fun initNavigationToolBar() {
@@ -118,6 +116,31 @@ class LoginDetailFragment : BaseLoginFragment(), LoginDetailContract.View {
 
         initCoursesSpinnerAdapter(coursesNames)
         setMainProfileInfo(user)
+    }
+
+    private fun initCoursesSpinnerAdapter(courseNames: List<String>) {
+        activity?.let { activity ->
+            val adapter = ArrayAdapter(
+                activity.applicationContext, R.layout.item_course, courseNames
+            )
+            adapter.setDropDownViewResource(R.layout.item_clicked_course)
+            spCourseChooser?.adapter = adapter
+
+            initOnCoursesSelectListener()
+        }
+    }
+
+    private fun initOnCoursesSelectListener() {
+        spCourseChooser?.onItemSelectedListener =
+            object : OnSpinnerItemSelectedListener() {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?, view: View?, position: Int, id: Long
+                ) {
+                    parent?.getItemAtPosition(position)?.let { course ->
+                        presenter.onCourseClick(course.toString())
+                    }
+                }
+            }
     }
 
     private fun setMainProfileInfo(user: User) {
@@ -194,7 +217,7 @@ class LoginDetailFragment : BaseLoginFragment(), LoginDetailContract.View {
 
     override fun updateUserCoalition(coalitionImageUrl: String, coalitionBackgroundColor: Long) {
         binding?.loginProfile?.imgCoalition?.let {
-            setSvgToImageViewWithCallBackFuncIfRequired(
+            setSvgToImageViewWithOnReadyCallBackFuncIfRequired(
                 it, coalitionImageUrl, this::changeLayerPainForImageView
             )
         }
@@ -209,28 +232,6 @@ class LoginDetailFragment : BaseLoginFragment(), LoginDetailContract.View {
 
     private fun viewUpdateVisibility() {
         binding?.loginProfile?.root?.updateVisibility(true)
-    }
-
-    private fun initCoursesSpinnerAdapter(courseNames: List<String>) {
-        activity?.let { activity ->
-            val adapter = ArrayAdapter(
-                activity.applicationContext, R.layout.item_course, courseNames
-            )
-            adapter.setDropDownViewResource(R.layout.item_clicked_course)
-            spCourseChooser?.adapter = adapter
-
-            initOnCoursesSelectListener()
-        }
-    }
-
-    private fun initOnCoursesSelectListener() {
-        spCourseChooser?.onItemSelectedListener =
-            object : OnSpinnerItemSelectedListener() {
-                override fun onItemSelected(
-                    parent: AdapterView<*>, view: View, position: Int, id: Long
-                ) =
-                    presenter.onCourseClick(parent.getItemAtPosition(position).toString())
-            }
     }
 
     override fun showConnectionErrorLayout(show: Boolean) {

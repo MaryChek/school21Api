@@ -9,11 +9,13 @@ import com.example.a42_api.data.repository.LoginRepository
 import com.example.a42_api.domain.interactor.UserInteractor
 import com.example.a42_api.domain.mapper.UserMapper
 import com.example.a42_api.domain.models.TokenKeys
+import com.example.a42_api.presentation.models.UserDetailModel
 import okhttp3.OkHttpClient
 
 class App: Application() {
 
     lateinit var interactor: UserInteractor
+    val userDetailModel = UserDetailModel()
     private val tokenKeys = TokenKeys(GRANT_TYPE, UID, SECRET)
 
     override fun onCreate() {
