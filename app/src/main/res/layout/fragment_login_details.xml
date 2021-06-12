@@ -49,7 +49,7 @@
                 tools:visibility="visible" />
 
             <include
-                android:id="@+id/itemSkills"
+                android:id="@+id/itemProjects"
                 layout="@layout/cv_properties"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
                 tools:visibility="visible" />
 
             <include
-                android:id="@+id/itemProjects"
+                android:id="@+id/itemSkills"
                 layout="@layout/cv_properties"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
